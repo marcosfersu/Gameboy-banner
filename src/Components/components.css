@@ -1,0 +1,24 @@
+.circle {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.circle:hover {
+  transform: scale(1.1);
+}
+
+.circle.active-item {
+  transform: scale(1.3);
+  transition: transform 0.2s ease-in-out;
+}
+
+.circle-inner {
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 50%;
+}

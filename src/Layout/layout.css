@@ -1,0 +1,70 @@
+.banner {
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.banner-content {
+  max-width: 1600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    CONTENT                                    */
+/* -------------------------------------------------------------------------- */
+
+.text-content {
+  margin-bottom: 4em;
+}
+
+.content {
+  width: 80%;
+}
+
+:is(.heading, .sub-heading, .description) {
+  overflow: hidden;
+}
+
+:is(.heading, .sub-heading, .description) span {
+  display: block;
+}
+
+.heading {
+  margin-bottom: 0.1em;
+}
+
+.sub-heading {
+  margin-bottom: 1em;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   CANVAS                                   */
+/* -------------------------------------------------------------------------- */
+
+.canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  SWITCHER                                  */
+/* -------------------------------------------------------------------------- */
+
+.switcher {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
