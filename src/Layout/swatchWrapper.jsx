@@ -1,5 +1,5 @@
 import React from "react";
-import SingleSwatchCircle from "../components/singleSwatchCircle";
+import SingleSwatchCircle from "../Components/SingleSwatchCircle";
 
 const SwatchWrapper = ({ activeData, watchData, handlesWatchClick }) => {
   const handleSwatchClicked = (item) => {

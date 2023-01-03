@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
-import Loading from "../Components/loading";
+import Loading from "../Components/Loading";
 import data from "../Data";
 import Canvas from "./canvas";
 import Content from "./content";
