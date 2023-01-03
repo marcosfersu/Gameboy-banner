@@ -22,3 +22,42 @@
   height: 1.6em;
   border-radius: 50%;
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                   LOADING                                  */
+/* -------------------------------------------------------------------------- */
+
+.loading-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #e5e5e5;
+  z-index: 9999;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #494786;
+  border-color: #494786 transparent #494786 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

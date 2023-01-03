@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
+import { LoadingAnimation } from "../Components";
 import data from "../Data";
 import Canvas from "./canvas";
 import Content from "./content";
@@ -9,9 +10,18 @@ const Banner = () => {
   const banner = useRef();
 
   const [activeData, setActiveData] = useState(data[0]);
+  const [rotateClick, setRotateClick] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleLoading = () => {
+    setIsLoading(false);
+  };
 
   const handlesWatchClick = (item) => {
     if (activeData.id !== item.id) setActiveData(item);
+  };
+  const handleRotateClick = () => {
+    setRotateClick(!rotateClick);
   };
 
   useEffect(() => {
@@ -26,6 +36,8 @@ const Banner = () => {
 
   return (
     <div ref={banner} className="banner center">
+      {isLoading && <LoadingAnimation />}
+
       <section className="banner-content">
         <article className="half-banner center">
           <Content activeData={activeData} />
@@ -35,6 +47,9 @@ const Banner = () => {
             activeData={activeData}
             watchData={data}
             handlesWatchClick={handlesWatchClick}
+            handleLoading={handleLoading}
+            handleRotateClick={handleRotateClick}
+            rotateClick={rotateClick}
           />
         </article>
       </section>
