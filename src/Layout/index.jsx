@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
-import { LoadingAnimation } from "../Components";
+import Loading from "../Components/loading";
 import data from "../Data";
 import Canvas from "./canvas";
 import Content from "./content";
@@ -36,7 +36,7 @@ const Banner = () => {
 
   return (
     <div ref={banner} className="banner center">
-      {isLoading && <LoadingAnimation />}
+      {isLoading && <Loading />}
 
       <section className="banner-content">
         <article className="half-banner center">

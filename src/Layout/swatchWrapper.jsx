@@ -1,5 +1,5 @@
 import React from "react";
-import { SingleSwatchWrapper } from "../components";
+import SingleSwatchCircle from "../components/singleSwatchCircle";
 
 const SwatchWrapper = ({ activeData, watchData, handlesWatchClick }) => {
   const handleSwatchClicked = (item) => {
@@ -9,7 +9,7 @@ const SwatchWrapper = ({ activeData, watchData, handlesWatchClick }) => {
   return (
     <div className="switcher">
       {watchData.map((o) => (
-        <SingleSwatchWrapper
+        <SingleSwatchCircle
           key={o.id}
           item={o}
           handleClick={handleSwatchClicked}
