@@ -1,10 +1,10 @@
 import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
 import data from "../Data";
-import Loading from "./../Components/Loading";
 import Canvas from "./canvas";
 import Content from "./content";
 import "./layout.css";
+import Loading from "./Loading";
 
 const Banner = () => {
   const banner = useRef();
@@ -36,10 +36,7 @@ const Banner = () => {
 
   return (
     <div ref={banner} className="banner center">
-      {
-        //isLoading && <Loading />
-      }
-      <Loading />
+      {isLoading && <Loading />}
       <section className="banner-content">
         <article className="half-banner center">
           <Content activeData={activeData} />
