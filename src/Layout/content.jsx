@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 
 const Content = ({ activeData }) => {
   useEffect(() => {
-    gsap.from("span", {
+    gsap.from(".text", {
       y: 200,
       ease: "power4.out",
       duration: 0.5,
@@ -14,11 +14,12 @@ const Content = ({ activeData }) => {
 
     gsap.to("button", {
       color: activeData.buttonColor.text,
+      fill: activeData.buttonColor.text,
       backgroundColor: activeData.buttonColor.background,
       ease: "power3.inOut",
       duration: 1,
     });
-    gsap.to("span", {
+    gsap.to(".text", {
       color: activeData.headingColor,
       ease: "power3.inOut",
       duration: 0.8,
