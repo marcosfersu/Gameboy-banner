@@ -24,6 +24,11 @@ const Content = ({ activeData }) => {
       ease: "power3.inOut",
       duration: 0.8,
     });
+    gsap.to(".canvas-bg", {
+      backgroundColor: activeData.buttonColor.background,
+      ease: "power3.inOut",
+      duration: 0.8,
+    });
 
     return () => {};
   }, [activeData]);

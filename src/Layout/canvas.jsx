@@ -69,7 +69,7 @@ class Canvas extends React.Component {
     // this.controls.minDistance = 100;
     this.controls.enableDamping = true;
     this.controls.autoRotate = rotateClick;
-    this.controls.autoRotateSpeed = 2;
+    this.controls.autoRotateSpeed = 3;
     this.controls.enablePan = false;
     this.controls.enableZoom = false;
     this.controls.minPolarAngle = -Math.PI / 2;
@@ -196,12 +196,7 @@ class Canvas extends React.Component {
             </svg>
           </button>
         </div>
-        <div
-          className="canvas-bg"
-          style={{
-            backgroundColor: ` ${activeData.buttonColor.background}`,
-          }}
-        ></div>
+        <div className="canvas-bg"></div>
       </div>
     );
   }
