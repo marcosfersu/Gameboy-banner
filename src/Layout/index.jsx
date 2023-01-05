@@ -13,6 +13,7 @@ const Banner = () => {
   const [rotateClick, setRotateClick] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [playAnimation, setPlayAnimation] = useState(false);
+  const [disableAnimation, setDisableAnimation] = useState(false);
 
   const handleLoading = () => {
     setIsLoading(false);
@@ -26,6 +27,9 @@ const Banner = () => {
   };
   const handleOnAnimation = () => {
     setPlayAnimation(!playAnimation);
+  };
+  const handleOnDisable = (disabled) => {
+    setDisableAnimation(disabled);
   };
 
   useEffect(() => {
@@ -66,6 +70,8 @@ const Banner = () => {
             handleLoading={handleLoading}
             handleRotateClick={handleRotateClick}
             handleOnAnimation={handleOnAnimation}
+            handleOnDisable={handleOnDisable}
+            disableAnimation={disableAnimation}
             playAnimation={playAnimation}
             rotateClick={rotateClick}
           />

@@ -10,7 +10,6 @@ import SwatchWrapper from "./swatchWrapper";
 class Canvas extends React.Component {
   constructor(props) {
     super(props);
-    this.btnAnimation = React.createRef();
     this.state = {
       selectedMesh: {},
       currentScene: null,
@@ -18,7 +17,8 @@ class Canvas extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { activeData, rotateClick, playAnimation } = this.props;
+    const { activeData, rotateClick, playAnimation, handleOnDisable } =
+      this.props;
     if (prevProps.activeData !== activeData) {
       this.applyMaterial(activeData);
     }
@@ -26,7 +26,7 @@ class Canvas extends React.Component {
       this.swtchControls(rotateClick);
     }
     if (prevProps.playAnimation !== playAnimation) {
-      this.setAnimation(playAnimation);
+      this.setAnimation(playAnimation, handleOnDisable);
     }
   }
 
@@ -149,22 +149,20 @@ class Canvas extends React.Component {
       this.gltf.scene.children.forEach((child) => {
         if (child.name === "cartridge") {
           child.scale.set(0, 0, 0);
-          console.log(child);
         }
       });
       this.scene.add(gltf.scene);
     });
   };
 
-  async setAnimation(params) {
-    console.log(this.btnAnimation.current);
-    await this.onAnimation(params);
-    this.btnAnimation.current.disabled = false;
+  async setAnimation(params, handleOnDisable) {
+    await this.onAnimation(params, handleOnDisable);
+    handleOnDisable(false);
   }
 
-  onAnimation(params) {
+  onAnimation(params, handleOnDisable) {
     return new Promise((resolve) => {
-      this.btnAnimation.current.disabled = true;
+      handleOnDisable(true);
       this.gltf.scene.children.forEach((child) => {
         if (child.name === "cartridge") {
           this.timeline = new gsap.timeline();
@@ -247,8 +245,12 @@ class Canvas extends React.Component {
       rotateClick,
       handleOnAnimation,
       playAnimation,
+      disableAnimation,
     } = this.props;
 
+    {
+      disableAnimation;
+    }
     return (
       <div className="canvas-container" id="container">
         <canvas className="canvas webgl"></canvas>
@@ -268,7 +270,7 @@ class Canvas extends React.Component {
             </svg>
           </button>
           <button
-            ref={this.btnAnimation}
+            disabled={disableAnimation}
             onClick={handleOnAnimation}
             className={`rotate-btn center ${playAnimation ? "active" : ""}`}
           >
