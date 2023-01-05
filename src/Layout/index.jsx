@@ -12,6 +12,7 @@ const Banner = () => {
   const [activeData, setActiveData] = useState(data[0]);
   const [rotateClick, setRotateClick] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [playAnimation, setPlayAnimation] = useState(false);
 
   const handleLoading = () => {
     setIsLoading(false);
@@ -23,6 +24,9 @@ const Banner = () => {
   const handleRotateClick = () => {
     setRotateClick(!rotateClick);
   };
+  const handleOnAnimation = () => {
+    setPlayAnimation(!playAnimation);
+  };
 
   useEffect(() => {
     gsap.to(banner.current, {
@@ -31,8 +35,21 @@ const Banner = () => {
       duration: 0.8,
     });
 
+    gsap.to("button", {
+      color: activeData.buttonColor.text,
+      fill: activeData.buttonColor.text,
+      backgroundColor: activeData.buttonColor.bgInactive,
+      ease: "power3.inOut",
+      duration: 0.3,
+    });
+    gsap.to(".active", {
+      backgroundColor: activeData.buttonColor.background,
+      ease: "power3.inOut",
+      duration: 0.3,
+    });
+
     return () => {};
-  }, [activeData]);
+  }, [activeData, rotateClick, playAnimation]);
 
   return (
     <div ref={banner} className="banner center">
@@ -48,6 +65,8 @@ const Banner = () => {
             handlesWatchClick={handlesWatchClick}
             handleLoading={handleLoading}
             handleRotateClick={handleRotateClick}
+            handleOnAnimation={handleOnAnimation}
+            playAnimation={playAnimation}
             rotateClick={rotateClick}
           />
         </article>

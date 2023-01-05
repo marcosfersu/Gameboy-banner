@@ -10,6 +10,7 @@ import SwatchWrapper from "./swatchWrapper";
 class Canvas extends React.Component {
   constructor(props) {
     super(props);
+    this.btnAnimation = React.createRef();
     this.state = {
       selectedMesh: {},
       currentScene: null,
@@ -17,12 +18,15 @@ class Canvas extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { activeData, rotateClick } = this.props;
+    const { activeData, rotateClick, playAnimation } = this.props;
     if (prevProps.activeData !== activeData) {
       this.applyMaterial(activeData);
     }
     if (prevProps.rotateClick !== rotateClick) {
       this.swtchControls(rotateClick);
+    }
+    if (prevProps.playAnimation !== playAnimation) {
+      this.setAnimation(playAnimation);
     }
   }
 
@@ -131,6 +135,7 @@ class Canvas extends React.Component {
       DRACO_LOADER
     );
     GLtfLoader.load(chair, (gltf) => {
+      this.gltf = gltf;
       gltf.scene.position.set(0, -30, 0);
       gltf.scene.rotation.set(0, -1, 0);
       gltf.scene.scale.set(25, 25, 25);
@@ -141,12 +146,70 @@ class Canvas extends React.Component {
           child.material.needsUpdate = true;
         }
       });
+      this.gltf.scene.children.forEach((child) => {
+        if (child.name === "cartridge") {
+          child.scale.set(0, 0, 0);
+          console.log(child);
+        }
+      });
       this.scene.add(gltf.scene);
     });
   };
 
+  async setAnimation(params) {
+    console.log(this.btnAnimation.current);
+    await this.onAnimation(params);
+    this.btnAnimation.current.disabled = false;
+  }
+
+  onAnimation(params) {
+    return new Promise((resolve) => {
+      this.btnAnimation.current.disabled = true;
+      this.gltf.scene.children.forEach((child) => {
+        if (child.name === "cartridge") {
+          this.timeline = new gsap.timeline();
+          if (params) {
+            this.timeline
+              .to(child.scale, {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "power1.out",
+                duration: 0.2,
+              })
+              .to(child.position, {
+                y: 2.238,
+                duration: 1.5,
+                onComplete: resolve,
+              });
+          } else {
+            this.timeline
+              .to(child.position, {
+                y: 3.327420711517334,
+                duration: 0.5,
+              })
+              .to(child.scale, {
+                x: 0,
+                y: 0,
+                z: 0,
+                ease: "power1.out",
+                duration: 0.2,
+                onComplete: resolve,
+              });
+          }
+        }
+      });
+    });
+  }
+
   swtchControls = (params) => {
     this.controls.autoRotate = params;
+  };
+
+  playAnimation = (params) => {
+    if (params) {
+      this.controls.autoRotate = params;
+    }
   };
 
   applyMaterial = (data) => {
@@ -182,9 +245,10 @@ class Canvas extends React.Component {
       handlesWatchClick,
       handleRotateClick,
       rotateClick,
+      handleOnAnimation,
+      playAnimation,
     } = this.props;
 
-    console.log(activeData.buttonColor.background);
     return (
       <div className="canvas-container" id="container">
         <canvas className="canvas webgl"></canvas>
@@ -202,10 +266,16 @@ class Canvas extends React.Component {
             <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
               <path d="m17.45 38.5-1.65-1.65 4.25-4.3q-6.4-.75-10.725-3.05Q5 27.2 5 23.8q0-3.55 5.55-6.1T24 15.15q7.95 0 13.475 2.55Q43 20.25 43 23.8q0 2.5-2.95 4.55t-7.85 3.2v-2.4q4-1 6.275-2.575Q40.75 25 40.75 23.8q0-1.7-4.225-4.05Q32.3 17.4 24 17.4t-12.525 2.35Q7.25 22.1 7.25 23.8q0 2.05 3.175 3.75 3.175 1.7 9.825 2.85L15.8 26l1.65-1.65 7.05 7.05Z" />
             </svg>
-            <div
-              className="border-active"
-              style={{ borderColor: activeData.buttonColor.background }}
-            ></div>
+          </button>
+          <button
+            ref={this.btnAnimation}
+            onClick={handleOnAnimation}
+            className={`rotate-btn center ${playAnimation ? "active" : ""}`}
+          >
+            <span>ON</span>
+            <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+              <path d="M22.5 26.1V5.8h3v20.3Zm1.5 16q-3.7 0-6.975-1.425Q13.75 39.25 11.3 36.8q-2.45-2.45-3.875-5.725Q6 27.8 6 24.1q0-4 1.7-7.475 1.7-3.475 4.8-6.175l2.1 2.1q-2.65 2.15-4.125 5.125T9 24.1q0 6.25 4.375 10.625T24 39.1q6.25 0 10.625-4.375T39 24.1q0-3.45-1.475-6.475Q36.05 14.6 33.5 12.55l2.15-2.1q3 2.55 4.675 6.1Q42 20.1 42 24.1q0 3.7-1.425 6.975-1.425 3.275-3.85 5.725-2.425 2.45-5.7 3.875Q27.75 42.1 24 42.1Z" />
+            </svg>
           </button>
         </div>
         <div className="canvas-bg"></div>

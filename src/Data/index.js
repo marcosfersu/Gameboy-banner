@@ -7,7 +7,11 @@ const data = [
     swatchColor: "#494786",
     background: "#D0CBD9",
     headingColor: "#000",
-    buttonColor: { text: "#fff", background: "#7C5F8F" },
+    buttonColor: {
+      text: "#fff",
+      background: "#7C5F8F",
+      bgInactive: "#B3AFBA",
+    },
     itemList: {
       base2: {
         color: "#494786",
@@ -25,7 +29,11 @@ const data = [
     swatchColor: "#F0F0E8",
     background: "#EDEDED",
     headingColor: "#000",
-    buttonColor: { text: "#EDEDED", background: "#949494" },
+    buttonColor: {
+      text: "#EDEDED",
+      background: "#949494",
+      bgInactive: "#F0F0E8",
+    },
     itemList: {
       base2: {
         color: "#F0F0E8",

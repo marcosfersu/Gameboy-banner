@@ -12,13 +12,6 @@ const Content = ({ activeData }) => {
       },
     });
 
-    gsap.to("button", {
-      color: activeData.buttonColor.text,
-      fill: activeData.buttonColor.text,
-      backgroundColor: activeData.buttonColor.background,
-      ease: "power3.inOut",
-      duration: 1,
-    });
     gsap.to(".text", {
       color: activeData.headingColor,
       ease: "power3.inOut",
