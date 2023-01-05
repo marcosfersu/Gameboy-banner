@@ -134,6 +134,25 @@ class Canvas extends React.Component {
     const GLtfLoader = new GLTFLoader(this.manager).setDRACOLoader(
       DRACO_LOADER
     );
+
+    this.video = {};
+    this.videoTexture = {};
+
+    this.video["screen"] = document.createElement("video");
+    this.video["screen"].src =
+      "./public/Pokemon-Leafgreen-Japanese-Version-Intro.mp4";
+    this.video["screen"].muted = true;
+    this.video["screen"].playsInline = true;
+    //this.video["screen"].autoplay = true;
+    this.video["screen"].loop = true;
+
+    this.videoTexture["screen"] = new THREE.VideoTexture(this.video["screen"]);
+    this.videoTexture["screen"].flipY = false;
+    this.videoTexture["screen"].minFilter = THREE.NearestFilter;
+    this.videoTexture["screen"].magFilter = THREE.NearestFilter;
+    this.videoTexture["screen"].generateMipmaps = false;
+    this.videoTexture["screen"].encoding = THREE.sRGBEncoding;
+
     GLtfLoader.load(chair, (gltf) => {
       this.gltf = gltf;
       gltf.scene.position.set(0, -30, 0);
@@ -150,6 +169,11 @@ class Canvas extends React.Component {
         if (child.name === "cartridge") {
           child.scale.set(0, 0, 0);
         }
+
+        if (child.name === "screen") {
+          this.baseMaterial = child.material;
+          console.log(this.baseMaterial);
+        }
       });
       this.scene.add(gltf.scene);
     });
@@ -164,6 +188,20 @@ class Canvas extends React.Component {
     return new Promise((resolve) => {
       handleOnDisable(true);
       this.gltf.scene.children.forEach((child) => {
+        if (child.name === "screen") {
+          if (params) {
+            setTimeout(() => {
+              this.video["screen"].play();
+              child.material = new THREE.MeshBasicMaterial({
+                map: this.videoTexture["screen"],
+              });
+            }, 2000);
+          } else {
+            this.video["screen"].currentTime = 0;
+            this.video["screen"].pause();
+            child.material = this.baseMaterial;
+          }
+        }
         if (child.name === "cartridge") {
           this.timeline = new gsap.timeline();
           if (params) {
