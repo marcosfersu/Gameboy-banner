@@ -170,8 +170,12 @@ class Canvas extends React.Component {
         }
 
         if (child.name === "screen") {
+          console.log(child);
           this.baseMaterial = child.material;
-          console.log(this.baseMaterial);
+        }
+        if (child.name === "screen2") {
+          console.log(child);
+          this.baseMaterial2 = child.material;
         }
       });
       this.scene.add(gltf.scene);
@@ -191,6 +195,13 @@ class Canvas extends React.Component {
           if (params) {
             setTimeout(() => {
               this.video["screen"].play();
+              if (
+                /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+                  navigator.userAgent
+                )
+              ) {
+                child.material = this.baseMaterial2;
+              }
               child.material = new THREE.MeshBasicMaterial({
                 map: this.videoTexture["screen"],
               });
