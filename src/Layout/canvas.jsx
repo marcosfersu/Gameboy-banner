@@ -139,7 +139,8 @@ class Canvas extends React.Component {
     this.videoTexture = {};
 
     this.video["screen"] = document.createElement("video");
-    this.video["screen"].src = "pokemon-leafgreen-japanese-version-intro";
+    this.video["screen"].src =
+      "public/pokemon-leafgreen-japanese-version-intro.mp4";
     this.video["screen"].muted = true;
     this.video["screen"].playsInline = true;
     //this.video["screen"].autoplay = true;
