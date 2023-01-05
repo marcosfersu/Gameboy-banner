@@ -32,7 +32,7 @@ const data = [
     buttonColor: {
       text: "#EDEDED",
       background: "#949494",
-      bgInactive: "#F0F0E8",
+      bgInactive: "#BFBFBA",
     },
     itemList: {
       base2: {
@@ -52,7 +52,11 @@ const data = [
     swatchColor: "#008ee2",
     background: "#84BABF",
     headingColor: "#ffffff",
-    buttonColor: { text: "#ffffff", background: "#33484A" },
+    buttonColor: {
+      text: "#ffffff",
+      background: "#33484A",
+      bgInactive: "#658E9C",
+    },
     itemList: {
       base2: {
         color: "#008ee2",
@@ -71,7 +75,7 @@ const data = [
     swatchColor: "#FF9F0C",
     background: "#FFEB80",
     headingColor: "#1F333E",
-    buttonColor: { text: "#fff", background: "#0899C9" },
+    buttonColor: { text: "#fff", background: "#0899C9", bgInactive: "#87C5C9" },
     itemList: {
       base2: {
         color: "#FF9F0C",
@@ -90,7 +94,7 @@ const data = [
     swatchColor: "#FF9AE2",
     background: "#EEE1F0",
     headingColor: "#1F333E",
-    buttonColor: { text: "#000", background: "#EEC5F1" },
+    buttonColor: { text: "#000", background: "#EEC5F1", bgInactive: "#D4C3DE" },
     itemList: {
       base2: {
         color: "#FF9AE2",
