@@ -201,10 +201,11 @@ class Canvas extends React.Component {
                 )
               ) {
                 child.material = this.baseMaterial2;
+              } else {
+                child.material = new THREE.MeshBasicMaterial({
+                  map: this.videoTexture["screen"],
+                });
               }
-              child.material = new THREE.MeshBasicMaterial({
-                map: this.videoTexture["screen"],
-              });
             }, 2000);
           } else {
             this.video["screen"].currentTime = 0;
