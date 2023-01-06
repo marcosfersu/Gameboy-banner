@@ -58,7 +58,10 @@ const Banner = () => {
   return (
     <div ref={banner} className="banner center">
       {isLoading && <Loading />}
-      <section className="banner-content">
+      <div className="logo wrap">
+        <img src="logo-gba.svg" alt="logo gba" />
+      </div>
+      <section className="banner-content wrap">
         <article className="half-banner center">
           <Content activeData={activeData} />
         </article>

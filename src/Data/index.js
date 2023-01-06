@@ -2,8 +2,8 @@ const data = [
   {
     id: 1,
     heading: "Clasic Color",
-    subHeading: "Violet model",
-    text: "It is a versatile and neutral color that can be paired with a variety of different outfits and styles.",
+    subHeading: "Model Violet | Gray",
+    text: "The Game Boy Advance (JP) (GBA) is a 32-bit Nintendo portable system initially released in Japan on March 21, 2001. A part of the sixth generation of video games, the Game Boy Advance was noted as the third and final Game Boy iteration.",
     swatchColor: "#494786",
     background: "#D0CBD9",
     headingColor: "#000",
@@ -23,9 +23,9 @@ const data = [
   },
   {
     id: 2,
-    heading: "Sandy Shores",
-    subHeading: "Unwavering Beige Beauty",
-    text: "It is a versatile and neutral color that can be paired with a variety of different outfits and styles.",
+    heading: "Alternative Color",
+    subHeading: "Model Gray",
+    text: "The Game Boy Advance (JP) (GBA) is a 32-bit Nintendo portable system initially released in Japan on March 21, 2001. A part of the sixth generation of video games, the Game Boy Advance was noted as the third and final Game Boy iteration.",
     swatchColor: "#F0F0E8",
     background: "#EDEDED",
     headingColor: "#000",
@@ -45,10 +45,9 @@ const data = [
   },
   {
     id: 3,
-    heading: "Earthy Khaki",
-    subHeading: "blue",
-    text: " The brown color of the bag adds a touch of warmth and earthiness to its appearance, making it suitable for a wide range of occasions and outfits.",
-
+    heading: "Custom Color",
+    subHeading: "Model Blue | Black",
+    text: "The Game Boy Advance (JP) (GBA) is a 32-bit Nintendo portable system initially released in Japan on March 21, 2001. A part of the sixth generation of video games, the Game Boy Advance was noted as the third and final Game Boy iteration.",
     swatchColor: "#008ee2",
     background: "#84BABF",
     headingColor: "#ffffff",
@@ -68,10 +67,9 @@ const data = [
   },
   {
     id: 4,
-    heading: "Ocean Explorer",
-    subHeading: "Ocean with coral tint.",
-    text: "The color blue is often associated with calmness, trust, and intelligence, making a blue backpack a great choice for anyone looking for a stylish and versatile bagpack.",
-
+    heading: "Custom Color",
+    subHeading: "Model Orange | Cyan",
+    text: "The Game Boy Advance (JP) (GBA) is a 32-bit Nintendo portable system initially released in Japan on March 21, 2001. A part of the sixth generation of video games, the Game Boy Advance was noted as the third and final Game Boy iteration.",
     swatchColor: "#FF9F0C",
     background: "#FFEB80",
     headingColor: "#1F333E",
@@ -87,10 +85,9 @@ const data = [
   },
   {
     id: 5,
-    heading: "Ocean Explorer",
-    subHeading: "Ocean with coral tint.",
-    text: "The color blue is often associated with calmness, trust, and intelligence, making a blue backpack a great choice for anyone looking for a stylish and versatile bagpack.",
-
+    heading: "Custom Color",
+    subHeading: "Model Pink",
+    text: "The Game Boy Advance (JP) (GBA) is a 32-bit Nintendo portable system initially released in Japan on March 21, 2001. A part of the sixth generation of video games, the Game Boy Advance was noted as the third and final Game Boy iteration.",
     swatchColor: "#FF9AE2",
     background: "#EEE1F0",
     headingColor: "#1F333E",
