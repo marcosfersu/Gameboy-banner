@@ -134,6 +134,10 @@
   z-index: 2;
 }
 
+.power-btn span {
+  width: 50px;
+}
+
 .canvas-bg {
   width: 50%;
   height: 50%;

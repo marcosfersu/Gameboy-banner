@@ -30,7 +30,7 @@ const data = [
     background: "#EDEDED",
     headingColor: "#000",
     buttonColor: {
-      text: "#EDEDED",
+      text: "#000",
       background: "#949494",
       bgInactive: "#BFBFBA",
     },

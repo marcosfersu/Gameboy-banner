@@ -249,6 +249,13 @@ class Canvas extends React.Component {
 
   swtchControls = (params) => {
     this.controls.autoRotate = params;
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      this.controls.autoRotateSpeed = 5;
+    }
   };
 
   playAnimation = (params) => {
@@ -319,7 +326,9 @@ class Canvas extends React.Component {
           <button
             disabled={disableAnimation}
             onClick={handleOnAnimation}
-            className={`rotate-btn center ${playAnimation ? "active" : ""}`}
+            className={`rotate-btn power-btn center ${
+              playAnimation ? "active" : ""
+            }`}
           >
             <span>{playAnimation ? "on " : "off"}</span>
             <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
