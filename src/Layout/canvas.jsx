@@ -5,6 +5,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
+import TouchAnimation from "../Components/TouchAnimation";
 import SwatchWrapper from "./swatchWrapper";
 
 class Canvas extends React.Component {
@@ -300,6 +301,7 @@ class Canvas extends React.Component {
       handleOnAnimation,
       playAnimation,
       disableAnimation,
+      isLoading,
     } = this.props;
 
     {
@@ -308,6 +310,8 @@ class Canvas extends React.Component {
     return (
       <div className="canvas-container" id="container">
         <canvas className="canvas webgl"></canvas>
+        {!isLoading && <TouchAnimation />}
+
         <SwatchWrapper
           activeData={activeData}
           watchData={watchData}

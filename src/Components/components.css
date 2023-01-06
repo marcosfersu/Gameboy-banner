@@ -61,3 +61,82 @@
     transform: rotate(360deg);
   }
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                    TOUCH                                   */
+/* -------------------------------------------------------------------------- */
+
+.touch-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  z-index: 999999;
+  pointer-events: none;
+}
+
+.touch-animation-container {
+  width: 30%;
+  position: relative;
+}
+
+.line-animation {
+  height: 0.3em;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.line-animation span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: rgb(91, 99, 161);
+  background: linear-gradient(
+    90deg,
+    rgba(91, 99, 161, 0) 0%,
+    rgba(46, 60, 48, 1) 100%
+  );
+  animation: line-ani 2s linear both;
+}
+@keyframes line-ani {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+.touch-img {
+  width: 100%;
+  position: relative;
+  opacity: 0.6;
+}
+
+.touch-img img {
+  width: 3em;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 100%;
+  animation: touch-ani 2s linear both;
+}
+@keyframes touch-ani {
+  0% {
+    left: 0%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 0%;
+  }
+}

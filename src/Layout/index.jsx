@@ -77,6 +77,7 @@ const Banner = () => {
             disableAnimation={disableAnimation}
             playAnimation={playAnimation}
             rotateClick={rotateClick}
+            isLoading={isLoading}
           />
         </article>
       </section>
